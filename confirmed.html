@@ -3,26 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cuenta Confirmada — HandymanPR</title>
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<title>HandymanPR</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f4f5f7; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+  .wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
+  .card { max-width: 420px; width: 100%; background: #fff; border-radius: 12px; overflow: hidden; text-align: center; }
+  .head { background: #0E7A82; padding: 28px 24px; color: #fff; font-size: 20px; font-weight: 700; letter-spacing: 0.5px; }
+  .body { padding: 36px 28px; }
+  .icon { width: 56px; height: 56px; border-radius: 28px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 28px; line-height: 1; }
+  h1 { margin: 0 0 12px; color: #111827; font-size: 18px; font-weight: 600; line-height: 1.4; }
+  p { margin: 0; color: #374151; font-size: 15px; line-height: 1.5; }
+</style>
 </head>
-<body style="margin:0;padding:0;background:#f4f5f7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
-  <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;">
-    <div style="max-width:420px;width:100%;background:#ffffff;border-radius:12px;overflow:hidden;text-align:center;">
-      <div style="background:#0E7A82;padding:28px 24px;">
-        <span style="color:#ffffff;font-size:20px;font-weight:700;letter-spacing:0.5px;">HandymanPR</span>
-      </div>
-      <div style="padding:36px 28px;">
-        <div style="width:56px;height:56px;border-radius:28px;background:#E8593F;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;">
-          <span style="color:#ffffff;font-size:28px;line-height:1;">&#10003;</span>
-        </div>
-        <p style="margin:0 0 12px;color:#111827;font-size:18px;font-weight:600;line-height:1.4;">
-          ¡Tu cuenta ha sido confirmada!
-        </p>
-        <p style="margin:0;color:#374151;font-size:15px;line-height:1.5;">
-          Ya puedes regresar a la app de HandymanPR e iniciar sesión.
-        </p>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="head">HandymanPR</div>
+      <div class="body">
+        <div id="icon" class="icon" style="background:#E8593F;">&#10003;</div>
+        <h1 id="title"></h1>
+        <p id="text"></p>
       </div>
     </div>
   </div>
+<script>
+(function () {
+  // Supabase's /verify redirect lands here (Site URL). It puts the result in
+  // the URL fragment (implicit flow): #access_token=...&type=signup on
+  // success, #error=...&error_code=... on failure (expired / already used).
+  // Errors can also arrive in the query string, so read both.
+  var hash = new URLSearchParams(location.hash.replace(/^#/, ''));
+  var query = new URLSearchParams(location.search);
+  function param(name) { return hash.get(name) || query.get(name); }
+
+  var error = param('error') || param('error_code');
+  var token = hash.get('access_token');
+  var type = param('type');
+
+  // The fragment carries a live session. Drop it from the address bar and
+  // history right away; the session itself is revoked at the end.
+  if (location.hash || location.search) {
+    history.replaceState(null, '', location.pathname);
+  }
+
+  // Language: the one chosen at sign-up (user_metadata.language inside the
+  // access token, read for display only, never trusted for anything else),
+  // else the browser's language, else Spanish.
+  var lang = null;
+  if (token) {
+    try {
+      var part = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+      while (part.length % 4) part += '=';
+      var claims = JSON.parse(atob(part));
+      var chosen = claims && claims.user_metadata && claims.user_metadata.language;
+      if (chosen === 'en' || chosen === 'es') lang = chosen;
+    } catch (e) { /* fall through to the browser's language */ }
+  }
+  if (!lang) {
+    lang = (navigator.language || '').toLowerCase().indexOf('en') === 0 ? 'en' : 'es';
+  }
+
+  var copy = {
+    es: {
+      signup: ['¡Tu cuenta ha sido confirmada!', 'Ya puedes regresar a la app de HandymanPR e iniciar sesión.'],
+      email: ['¡Tu correo electrónico ha sido confirmado!', 'Ya puedes regresar a la app de HandymanPR.'],
+      invalid: ['Este enlace ya no es válido', 'Puede que haya expirado o que ya se haya usado. Si ya confirmaste tu cuenta, regresa a la app e inicia sesión. Si no, regístrate de nuevo para recibir un enlace nuevo.'],
+      unknown: ['HandymanPR', 'Si tocaste el enlace de confirmación de tu correo, regresa a la app de HandymanPR e inicia sesión.']
+    },
+    en: {
+      signup: ['Your account is confirmed!', 'You can now go back to the HandymanPR app and log in.'],
+      email: ['Your email address is confirmed!', 'You can now go back to the HandymanPR app.'],
+      invalid: ['This link is no longer valid', 'It may have expired or already been used. If you already confirmed your account, go back to the app and log in. If not, sign up again to get a new link.'],
+      unknown: ['HandymanPR', 'If you tapped the confirmation link in your email, go back to the HandymanPR app and log in.']
+    }
+  };
+
+  // Only the two link types that land here get a success message; anything
+  // else (or no result at all) gets the neutral text instead of a false
+  // "confirmed".
+  var state = error ? 'invalid'
+    : token && type === 'signup' ? 'signup'
+    : token && type === 'email_change' ? 'email'
+    : 'unknown';
+  var t = copy[lang][state];
+
+  document.documentElement.lang = lang;
+  document.title = t[0] + ' — HandymanPR';
+  document.getElementById('title').textContent = t[0];
+  document.getElementById('text').textContent = t[1];
+  var icon = document.getElementById('icon');
+  if (state === 'invalid') {
+    icon.style.background = '#9ca3af';
+    icon.textContent = '!';
+  } else if (state === 'unknown') {
+    icon.style.display = 'none';
+  }
+
+  // The /verify redirect also signed this browser in, and nothing here uses
+  // that session. Revoke it -- this session only (scope=local) -- so a valid
+  // refresh token isn't left behind. Best effort, after the message is
+  // shown: the message never depends on it. The token goes only back to
+  // Supabase, which issued it.
+  if (token) {
+    // Public by design: the same URL + anon key ship inside the app itself.
+    var SUPABASE_URL = 'https://uswacxdfunopsggkqxgh.supabase.co';
+    var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzd2FjeGRmdW5vcHNnZ2txeGdoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUzOTkyMzYsImV4cCI6MjA5MDk3NTIzNn0.03gOr1TD1IJr2ku_6mwUuXqVbFxE0FfdNVKpsrIhlgo';
+    try {
+      fetch(SUPABASE_URL + '/auth/v1/logout?scope=local', {
+        method: 'POST',
+        headers: { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + token },
+        credentials: 'omit',
+        referrerPolicy: 'no-referrer'
+      }).catch(function () {});
+    } catch (e) { /* nothing to undo */ }
+  }
+})();
+</script>
 </body>
 </html>
