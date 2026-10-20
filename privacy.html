@@ -51,8 +51,9 @@
             <li><strong>Reglas de la Comunidad:</strong> cuando aceptas las Reglas de la Comunidad, qué versión, cuándo, y desde qué pantalla y versión de la app.</li>
             <li><strong>Reportes y bloqueos:</strong> si reportas algo, lo que reportaste, el motivo, tu nota y una copia del contenido reportado tal como estaba en ese momento. Si bloqueas a alguien, a quién y cuándo.</li>
             <li><strong>Inicios de sesión y registros técnicos:</strong> por cada sesión iniciada, nuestro proveedor de autenticación guarda cuándo empezó y cuándo se usó por última vez, tu dirección IP y el tipo de dispositivo o navegador. Nuestro proveedor de hosting también guarda registros de las solicitudes a nuestros servidores, para seguridad y para que el servicio funcione.</li>
+            <li><strong>Informes de fallos:</strong> si la app se cierra inesperadamente o tiene un error, un informe de lo que falló en el código, la versión de la app, y el modelo y la versión del sistema de tu teléfono. No está vinculado a tu cuenta y no incluye tus mensajes ni otro contenido.</li>
           </ul>
-          <p>No recogemos la ubicación de tu dispositivo, tus contactos ni datos de pago. La app no procesa pagos, no muestra publicidad y no usa herramientas de análisis de terceros. Este sitio web no usa cookies ni rastreadores; su proveedor de hosting puede guardar registros técnicos de las visitas.</p>
+          <p>No recogemos la ubicación de tu dispositivo, tus contactos ni datos de pago. La app no procesa pagos, no muestra publicidad y no usa herramientas de análisis de terceros; Sentry solo recibe informes de fallos y errores. Este sitio web no usa cookies ni rastreadores; su proveedor de hosting puede guardar registros técnicos de las visitas.</p>
 
           <h2>Cómo la usamos</h2>
           <ul>
@@ -61,6 +62,7 @@
             <li>Para mantener la app segura y evitar abusos.</li>
             <li>Para hacer cumplir nuestras <a href="rules.html#es">Reglas de la Comunidad</a>: nuestro equipo revisa cada reporte, y podemos quitar contenido o suspender cuentas que las incumplan. Los avisos de reportes le llegan por correo a nuestro equipo, solo con el tipo de reporte y su motivo.</li>
             <li>Para aplicar los bloqueos: cuando bloqueas a alguien, ninguno de los dos puede contactar al otro, y se detienen las ofertas, invitaciones y avisos de trabajos nuevos entre ustedes.</li>
+            <li>Para encontrar y corregir fallos y errores.</li>
             <li>Para responder a tus preguntas y solicitudes.</li>
           </ul>
 
@@ -76,7 +78,7 @@
           </ul>
 
           <h2>Proveedores de servicio</h2>
-          <p>Usamos proveedores que guardan y procesan información en nuestro nombre, solo para dar su servicio: <strong>Supabase</strong> (base de datos, autenticación, almacenamiento de archivos y funciones del servidor), <strong>Resend</strong> (para enviar los correos de tu cuenta, como la confirmación y el cambio de contraseña, y los avisos de reportes a nuestro equipo), <strong>Expo</strong> junto con los servicios de notificaciones de Apple y Google (para entregar notificaciones), <strong>Cloudflare</strong> (nuestro dominio y el reenvío de los correos que nos escribes) y <strong>GitHub Pages</strong> (para este sitio web). No vendemos tu información personal.</p>
+          <p>Usamos proveedores que guardan y procesan información en nuestro nombre, solo para dar su servicio: <strong>Supabase</strong> (base de datos, autenticación, almacenamiento de archivos y funciones del servidor), <strong>Resend</strong> (para enviar los correos de tu cuenta, como la confirmación y el cambio de contraseña, y los avisos de reportes a nuestro equipo), <strong>Expo</strong> junto con los servicios de notificaciones de Apple y Google (para entregar notificaciones), <strong>Sentry</strong> (informes de fallos y errores), <strong>Cloudflare</strong> (nuestro dominio y el reenvío de los correos que nos escribes) y <strong>GitHub Pages</strong> (para este sitio web). No vendemos tu información personal.</p>
 
           <h2>Cuánto tiempo la guardamos</h2>
           <p>Guardamos tu información mientras tengas tu cuenta. Además:</p>
@@ -87,6 +89,7 @@
             <li>Un bloqueo dura hasta que lo quitas o uno de los dos elimina su cuenta.</li>
             <li>Guardamos un registro breve de cada acción de moderación (qué se hizo y cuándo), sin el contenido reportado, mientras sea necesario para hacer cumplir nuestras reglas y atender disputas.</li>
             <li>Los registros de sesión se borran cuando cierras esa sesión o eliminas tu cuenta.</li>
+            <li>Los informes de fallos se borran automáticamente en un máximo de 90 días.</li>
             <li>Los registros técnicos y las copias de respaldo pueden conservarse durante un período limitado, según las prácticas de retención de nuestros proveedores.</li>
           </ul>
 
@@ -135,8 +138,9 @@
             <li><strong>Community Rules:</strong> when you accept the Community Rules, which version, when, and from which screen and app version.</li>
             <li><strong>Reports and blocks:</strong> if you report something, what you reported, the reason, your note and a copy of the reported content as it was at that moment. If you block someone, who and when.</li>
             <li><strong>Sign-ins and technical logs:</strong> for each signed-in session, our authentication provider keeps when it started and was last used, your IP address and the type of device or browser. Our hosting provider also keeps logs of requests to our servers, for security and to keep the service running.</li>
+            <li><strong>Crash reports:</strong> if the app crashes or hits an error, a report of what went wrong in the code, the app version, and your phone's model and system version. It isn't linked to your account and doesn't include your messages or other content.</li>
           </ul>
-          <p>We don't collect your device's location, your contacts or payment details. The app doesn't process payments, doesn't show ads and doesn't use third-party analytics tools. This website doesn't use cookies or trackers; its hosting provider may keep technical logs of visits.</p>
+          <p>We don't collect your device's location, your contacts or payment details. The app doesn't process payments, doesn't show ads and doesn't use third-party analytics tools; Sentry only receives crash and error reports. This website doesn't use cookies or trackers; its hosting provider may keep technical logs of visits.</p>
 
           <h2>How we use it</h2>
           <ul>
@@ -145,6 +149,7 @@
             <li>To keep the app secure and prevent abuse.</li>
             <li>To enforce our <a href="rules.html#en">Community Rules</a>: our team reviews every report, and we may remove content or suspend accounts that break them. Report alerts are emailed to our team with only the type of report and its reason.</li>
             <li>To apply blocks: when you block someone, neither of you can contact the other, and new bids, invitations and job alerts between you stop.</li>
+            <li>To find and fix crashes and errors.</li>
             <li>To answer your questions and requests.</li>
           </ul>
 
@@ -160,7 +165,7 @@
           </ul>
 
           <h2>Service providers</h2>
-          <p>We use providers that store and process information on our behalf, only to provide their service: <strong>Supabase</strong> (database, authentication, file storage and server functions), <strong>Resend</strong> (to send your account emails, such as sign-up confirmation and password changes, and report alerts to our team), <strong>Expo</strong> together with Apple's and Google's notification services (to deliver notifications), <strong>Cloudflare</strong> (our domain and forwarding the emails you send us) and <strong>GitHub Pages</strong> (for this website). We don't sell your personal information.</p>
+          <p>We use providers that store and process information on our behalf, only to provide their service: <strong>Supabase</strong> (database, authentication, file storage and server functions), <strong>Resend</strong> (to send your account emails, such as sign-up confirmation and password changes, and report alerts to our team), <strong>Expo</strong> together with Apple's and Google's notification services (to deliver notifications), <strong>Sentry</strong> (crash and error reports), <strong>Cloudflare</strong> (our domain and forwarding the emails you send us) and <strong>GitHub Pages</strong> (for this website). We don't sell your personal information.</p>
 
           <h2>How long we keep it</h2>
           <p>We keep your information while you have an account. Also:</p>
@@ -171,6 +176,7 @@
             <li>A block lasts until you lift it or one of you deletes their account.</li>
             <li>We keep a short record of each moderation action (what was done and when), without the reported content, as long as needed to enforce our rules and handle disputes.</li>
             <li>Session records are removed when you sign out of that session or delete your account.</li>
+            <li>Crash reports are deleted automatically within 90 days.</li>
             <li>Technical logs and backup copies may remain for a limited period under our service providers' retention practices.</li>
           </ul>
 
