@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<title>HandymanPR</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f4f5f7; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+  .wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
+  .card { max-width: 420px; width: 100%; background: #fff; border-radius: 12px; overflow: hidden; text-align: center; }
+  .head { background: #0E7A82; padding: 28px 24px; color: #fff; font-size: 20px; font-weight: 700; letter-spacing: 0.5px; }
+  .body { padding: 36px 28px; }
+  h1 { margin: 0 0 12px; color: #111827; font-size: 18px; font-weight: 600; line-height: 1.4; }
+  p { margin: 0 0 16px; color: #374151; font-size: 15px; line-height: 1.5; }
+  .soon { display: inline-block; margin: 4px 0 20px; padding: 8px 14px; border-radius: 10px; background: #e6f2f3; color: #0E7A82; font-weight: 700; font-size: 14px; }
+  .invite { padding: 14px 16px; border-radius: 10px; background: #f4f5f7; text-align: left; }
+  .invite p { margin: 0; font-size: 14px; }
+  .links { margin: 24px 0 0; font-size: 14px; color: #6b7280; }
+  .links a { color: #0E7A82; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="head">HandymanPR</div>
+      <div class="body">
+        <h1 id="title"></h1>
+        <p id="text"></p>
+        <div class="soon" id="soon"></div>
+        <div class="invite"><p id="invite"></p></div>
+        <p class="links">
+          <a href="rules.html" id="rules"></a> · <a href="privacy.html" id="privacy"></a><br>
+          <a href="mailto:soporte@handymanpr.app">soporte@handymanpr.app</a>
+        </p>
+      </div>
+    </div>
+  </div>
+<script>
+(function () {
+  // The site's front page (the referral share message links here). Text
+  // only (textContent); no sign-in, nothing stored.
+  var lang = (navigator.language || '').toLowerCase().indexOf('en') === 0 ? 'en' : 'es';
+  var copy = {
+      es: {
+        title: 'Técnicos de confianza en Puerto Rico',
+        text: 'Publica el trabajo que necesitas, recibe ofertas de técnicos de tu pueblo y escoge el que más te convenga.',
+        soon: 'Muy pronto en Google Play y App Store',
+        invite: '¿Te invitó otro técnico? Cuando bajes la app, crea tu cuenta de técnico y escribe su código en Perfil → Ajustes → Invita a otro técnico, en tus primeros 7 días.',
+        rules: 'Reglas de la comunidad',
+        privacy: 'Privacidad'
+      },
+      en: {
+        title: 'Trusted handymen in Puerto Rico',
+        text: 'Post the job you need done, get offers from handymen in your town, and pick the one that suits you.',
+        soon: 'Coming soon to Google Play and the App Store',
+        invite: 'Did another handyman invite you? Once you get the app, create your handyman account and enter their code in Profile → Settings → Invite another handyman, within your first 7 days.',
+        rules: 'Community rules',
+        privacy: 'Privacy'
+      }
+    };
+  var c = copy[lang];
+  document.documentElement.lang = lang;
+  Object.keys(c).forEach(function (id) {
+    document.getElementById(id).textContent = c[id];
+  });
+})();
+</script>
+</body>
+</html>
