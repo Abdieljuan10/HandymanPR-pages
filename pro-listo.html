@@ -41,6 +41,13 @@
       es: ['¡Listo!', 'Tu pago se procesó. En unos segundos verás Pro en la app (Perfil → Ajustes).', 'Volver a la app'],
       en: ['All set!', 'Your payment went through. You will see Pro in the app within a few seconds (Profile → Settings).', 'Back to the app']
     };
+  // Coming back from "Administrar suscripción" (the billing portal): no
+  // payment is implied, so a neutral message.
+  var portal = {
+      es: ['Listo', 'Si hiciste cambios en tu suscripción, ya se guardaron. La app los mostrará en unos segundos.', 'Volver a la app'],
+      en: ['Done', 'If you changed your subscription, it is saved. The app will show it within a few seconds.', 'Back to the app']
+    };
+  if (new URLSearchParams(location.search).get('de') === 'portal') copy = portal;
   var c = copy[lang];
   document.documentElement.lang = lang;
   document.getElementById('title').textContent = c[0];
