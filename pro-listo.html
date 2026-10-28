@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<title>HandymanPR</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f4f5f7; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+  .wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
+  .card { max-width: 420px; width: 100%; background: #fff; border-radius: 12px; overflow: hidden; text-align: center; }
+  .head { background: #0E7A82; padding: 28px 24px; color: #fff; font-size: 20px; font-weight: 700; letter-spacing: 0.5px; }
+  .body { padding: 36px 28px; }
+  .icon { width: 56px; height: 56px; border-radius: 28px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 28px; line-height: 1; background: #0E7A82; }
+  h1 { margin: 0 0 12px; color: #111827; font-size: 18px; font-weight: 600; line-height: 1.4; }
+  p { margin: 0 0 20px; color: #374151; font-size: 15px; line-height: 1.5; }
+  a.button { display: inline-block; background: #0E7A82; color: #fff; text-decoration: none; font-weight: 700; padding: 12px 22px; border-radius: 10px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="head">HandymanPR</div>
+      <div class="body">
+        <div class="icon">&#10003;</div>
+        <h1 id="title"></h1>
+        <p id="text"></p>
+        <a class="button" id="back" href="handymanpr://"></a>
+      </div>
+    </div>
+  </div>
+<script>
+(function () {
+  // Stripe sends the handyman here after checkout or the billing portal.
+  // Nothing on this page decides Pro: the app learns it from Stripe's
+  // verified webhook. Text only (textContent).
+  var lang = (navigator.language || '').toLowerCase().indexOf('en') === 0 ? 'en' : 'es';
+  var copy = {
+      es: ['¡Listo!', 'Tu pago se procesó. En unos segundos verás Pro en la app (Perfil → Ajustes).', 'Volver a la app'],
+      en: ['All set!', 'Your payment went through. You will see Pro in the app within a few seconds (Profile → Settings).', 'Back to the app']
+    };
+  var c = copy[lang];
+  document.documentElement.lang = lang;
+  document.getElementById('title').textContent = c[0];
+  document.getElementById('text').textContent = c[1];
+  document.getElementById('back').textContent = c[2];
+})();
+</script>
+</body>
+</html>
