@@ -42,13 +42,14 @@
           <h2>Información que recogemos</h2>
           <ul>
             <li><strong>Tu cuenta:</strong> correo electrónico, contraseña, nombre, tipo de cuenta (cliente o técnico) e idioma. Tu contraseña la guarda de forma protegida nuestro proveedor de autenticación; nosotros no podemos verla.</li>
-            <li><strong>Tu perfil:</strong> una foto y un número de teléfono, si decides añadirlos. Si eres técnico, también tus oficios, pueblos, portafolio, certificaciones (las fotos o documentos que subes), los enlaces a tu Instagram o Facebook si los añades, y el estado de tu plan.</li>
-            <li><strong>Trabajos y ofertas:</strong> lo que publicas en un trabajo (título, descripción, fotos, dirección y fechas), las ofertas (precio y nota), las versiones anteriores de una oferta cuando se edita o se envía de nuevo, el motivo que da un cliente al no aceptar una oferta y lo que escriba con él, las cancelaciones y el historial de cada trabajo.</li>
+            <li><strong>Tu perfil:</strong> una foto y un número de teléfono, si decides añadirlos. Si eres técnico, también tus oficios, pueblos, portafolio, certificaciones (las fotos o documentos que subes), los enlaces a tu Instagram o Facebook y el nombre de tu compañía y tu sitio web si los añades, y el estado de tu plan.</li>
+            <li><strong>Trabajos y ofertas:</strong> lo que publicas en un trabajo (título, descripción, fotos, dirección, y fechas y horas), las ofertas (precio y nota), las versiones anteriores de una oferta cuando se edita o se envía de nuevo, el motivo que da un cliente al no aceptar una oferta y lo que escriba con él, las cancelaciones y el historial de cada trabajo.</li>
             <li><strong>Ofertas del mes:</strong> si eres técnico, en qué trabajos ofertaste y cuándo, para aplicar el límite mensual de ofertas del plan gratis.</li>
             <li><strong>Disponibilidad:</strong> si eres técnico, los días que marcas como no disponible en tu Agenda.</li>
             <li><strong>Plan Pro y pagos:</strong> si eres técnico y te suscribes a Pro, el pago lo procesa Stripe en su propia página: tu tarjeta y tus datos de facturación van directamente a Stripe, y nosotros no los vemos ni los guardamos. Le damos a Stripe tu correo electrónico y un identificador de tu cuenta. Nosotros guardamos tu identificador de cliente en Stripe, el estado y las fechas de tu suscripción, y un historial de cómo y hasta cuándo tienes Pro (pagado, promoción, invitación o asignado por nuestro equipo).</li>
             <li><strong>Invitaciones entre técnicos:</strong> tu código de invitación, quién te invitó si usaste un código, y los premios de invitación que ganaste.</li>
             <li><strong>Mensajes:</strong> el texto y las fotos que envías en los chats, y cuándo abriste cada chat por última vez, para mostrarte los mensajes sin leer.</li>
+            <li><strong>Asistente de trabajos con IA:</strong> si usas “¿Qué necesitas hacer?”, lo que escribes y la foto que añades se envían a Google (Gemini) para preparar un borrador de tu trabajo, que tú revisas antes de publicar. No guardamos ese texto ni esa foto a menos que publiques el trabajo; solo guardamos cuándo usaste el asistente, para limitar cuántas veces se usa al día.</li>
             <li><strong>Cámara:</strong> si eliges “Tomar foto”, la app abre la cámara del teléfono. Solo se suben las fotos que tú añades.</li>
             <li><strong>Reseñas:</strong> las calificaciones y comentarios que escribes.</li>
             <li><strong>Técnicos guardados:</strong> si eres cliente, los técnicos que guardas en tu lista.</li>
@@ -68,13 +69,14 @@
             <li>Para mantener la app segura y evitar abusos.</li>
             <li>Para hacer cumplir nuestras <a href="rules.html#es">Reglas de la Comunidad</a>: nuestro equipo revisa cada reporte, y podemos quitar contenido o suspender cuentas que las incumplan. Los avisos de reportes le llegan por correo a nuestro equipo, solo con el tipo de reporte y su motivo.</li>
             <li>Para aplicar los bloqueos: cuando bloqueas a alguien, ninguno de los dos puede contactar al otro, y se detienen las ofertas, invitaciones y avisos de trabajos nuevos entre ustedes.</li>
+            <li>Para ayudarte a escribir un trabajo con el asistente de IA, si lo usas.</li>
             <li>Para encontrar y corregir fallos y errores.</li>
             <li>Para responder a tus preguntas y solicitudes.</li>
           </ul>
 
           <h2>Quién puede ver tu información</h2>
           <ul>
-            <li>Otros usuarios ven tu perfil público: nombre, foto y calificaciones. En los técnicos, también su información profesional, como oficios, pueblos y portafolio, y los enlaces sociales que añadan.</li>
+            <li>Otros usuarios ven tu perfil público: nombre, foto y calificaciones. En los técnicos, también su información profesional, como oficios, pueblos y portafolio, el nombre de su compañía y los enlaces a sus redes y su sitio web, si los añaden.</li>
             <li>Los técnicos que pueden ver un trabajo ven su título, descripción, fotos, oficio y pueblo. La dirección solo la ven el cliente y el técnico contratado.</li>
             <li>Los chats solo los ven las dos personas de la conversación. Nadie más sabe cuándo abres un chat: la app no muestra confirmaciones de lectura.</li>
             <li>Si un cliente no acepta tu oferta, ves el motivo y lo que haya escrito. Las versiones anteriores de una oferta solo las ve nuestro equipo.</li>
@@ -87,7 +89,7 @@
           </ul>
 
           <h2>Proveedores de servicio</h2>
-          <p>Usamos proveedores que guardan y procesan información en nuestro nombre, solo para dar su servicio: <strong>Supabase</strong> (base de datos, autenticación, almacenamiento de archivos y funciones del servidor), <strong>Resend</strong> (para enviar los correos de tu cuenta, como la confirmación y el cambio de contraseña, y los avisos de reportes a nuestro equipo), <strong>Expo</strong> junto con los servicios de notificaciones de Apple y Google (para entregar notificaciones), <strong>Sentry</strong> (informes de fallos y errores), <strong>Stripe</strong> (pagos y suscripciones a Pro), <strong>Cloudflare</strong> (nuestro dominio y el reenvío de los correos que nos escribes) y <strong>GitHub Pages</strong> (para este sitio web). No vendemos tu información personal.</p>
+          <p>Usamos proveedores que guardan y procesan información en nuestro nombre, solo para dar su servicio: <strong>Supabase</strong> (base de datos, autenticación, almacenamiento de archivos y funciones del servidor), <strong>Resend</strong> (para enviar los correos de tu cuenta, como la confirmación y el cambio de contraseña, y los avisos de reportes a nuestro equipo), <strong>Expo</strong> junto con los servicios de notificaciones de Apple y Google (para entregar notificaciones), <strong>Sentry</strong> (informes de fallos y errores), <strong>Stripe</strong> (pagos y suscripciones a Pro), <strong>Google</strong> (Gemini, para el asistente de trabajos con IA), <strong>Cloudflare</strong> (nuestro dominio, el reenvío de los correos que nos escribes y las páginas de suscripción a Pro y de nuestro equipo) y <strong>GitHub Pages</strong> (para este sitio web). No vendemos tu información personal.</p>
 
           <h2>Cuánto tiempo la guardamos</h2>
           <p>Guardamos tu información mientras tengas tu cuenta. Además:</p>
@@ -100,6 +102,7 @@
             <li>Guardamos un registro breve de cada acción de moderación (qué se hizo y cuándo), sin el contenido reportado, mientras sea necesario para hacer cumplir nuestras reglas y atender disputas.</li>
             <li>Los registros de sesión se borran cuando cierras esa sesión o eliminas tu cuenta.</li>
             <li>Los datos de tu suscripción, tu historial de Pro, tu disponibilidad y tus invitaciones se guardan mientras tengas tu cuenta. Si otro técnico te invitó y eliminas tu cuenta, esa persona conserva solo el registro de su premio, sin tu información. Stripe guarda sus propios registros de pagos según sus obligaciones legales y su <a href="https://stripe.com/privacy">política de privacidad</a>.</li>
+            <li>El registro de cuándo usaste el asistente de IA se borra a los 2 días.</li>
             <li>Los informes de fallos se borran automáticamente en un máximo de 90 días.</li>
             <li>Los registros técnicos y las copias de respaldo pueden conservarse durante un período limitado, según las prácticas de retención de nuestros proveedores.</li>
           </ul>
@@ -141,13 +144,14 @@
           <h2>Information we collect</h2>
           <ul>
             <li><strong>Your account:</strong> email address, password, name, account type (client or handyman) and language. Your password is stored securely by our authentication provider; we can't see it.</li>
-            <li><strong>Your profile:</strong> a photo and a phone number, if you choose to add them. If you're a handyman, also your trades, towns, portfolio, certifications (the photos or documents you upload), links to your Instagram or Facebook if you add them, and your plan status.</li>
-            <li><strong>Jobs and bids:</strong> what you post in a job (title, description, photos, address and dates), bids (price and note), earlier versions of a bid when it's edited or sent again, the reason a client gives for turning down a bid and anything they write with it, cancellations and each job's history.</li>
+            <li><strong>Your profile:</strong> a photo and a phone number, if you choose to add them. If you're a handyman, also your trades, towns, portfolio, certifications (the photos or documents you upload), links to your Instagram or Facebook and your company name and website if you add them, and your plan status.</li>
+            <li><strong>Jobs and bids:</strong> what you post in a job (title, description, photos, address, and dates and times), bids (price and note), earlier versions of a bid when it's edited or sent again, the reason a client gives for turning down a bid and anything they write with it, cancellations and each job's history.</li>
             <li><strong>Monthly bids:</strong> if you're a handyman, which jobs you bid on and when, to apply the free plan's monthly bid limit.</li>
             <li><strong>Availability:</strong> if you're a handyman, the days you mark as unavailable in your Schedule.</li>
             <li><strong>Pro plan and payments:</strong> if you're a handyman and subscribe to Pro, the payment is processed by Stripe on its own page: your card and billing details go directly to Stripe, and we don't see or store them. We give Stripe your email address and an identifier for your account. We keep your Stripe customer identifier, your subscription's status and dates, and a history of how and until when you have Pro (paid, promotion, invitation or granted by our team).</li>
             <li><strong>Handyman invitations:</strong> your invite code, who invited you if you used a code, and the invitation rewards you earned.</li>
             <li><strong>Messages:</strong> the text and photos you send in chats, and when you last opened each chat, to show your unread messages.</li>
+            <li><strong>AI job assistant:</strong> if you use “What do you need done?”, what you type and the photo you add are sent to Google (Gemini) to prepare a draft of your job, which you review before posting. We don't keep that text or photo unless you post the job; we only keep when you used the assistant, to limit how often it's used each day.</li>
             <li><strong>Camera:</strong> if you choose “Take photo”, the app opens your phone’s camera. Only the photos you add are uploaded.</li>
             <li><strong>Reviews:</strong> the ratings and comments you write.</li>
             <li><strong>Saved handymen:</strong> if you're a client, the handymen you save to your list.</li>
@@ -167,13 +171,14 @@
             <li>To keep the app secure and prevent abuse.</li>
             <li>To enforce our <a href="rules.html#en">Community Rules</a>: our team reviews every report, and we may remove content or suspend accounts that break them. Report alerts are emailed to our team with only the type of report and its reason.</li>
             <li>To apply blocks: when you block someone, neither of you can contact the other, and new bids, invitations and job alerts between you stop.</li>
+            <li>To help you write a job with the AI assistant, if you use it.</li>
             <li>To find and fix crashes and errors.</li>
             <li>To answer your questions and requests.</li>
           </ul>
 
           <h2>Who can see your information</h2>
           <ul>
-            <li>Other users see your public profile: name, photo and ratings. For handymen, also their professional details, such as trades, towns and portfolio, and the social links they add.</li>
+            <li>Other users see your public profile: name, photo and ratings. For handymen, also their professional details, such as trades, towns and portfolio, their company name, and the social and website links they add.</li>
             <li>Handymen who can see a job see its title, description, photos, trade and town. Only the client and the hired handyman see the address.</li>
             <li>Chats are visible only to the two people in the conversation. No one else knows when you open a chat: the app doesn't show read receipts.</li>
             <li>If a client turns down your bid, you see the reason and anything they wrote. Earlier versions of a bid are visible only to our team.</li>
@@ -186,7 +191,7 @@
           </ul>
 
           <h2>Service providers</h2>
-          <p>We use providers that store and process information on our behalf, only to provide their service: <strong>Supabase</strong> (database, authentication, file storage and server functions), <strong>Resend</strong> (to send your account emails, such as sign-up confirmation and password changes, and report alerts to our team), <strong>Expo</strong> together with Apple's and Google's notification services (to deliver notifications), <strong>Sentry</strong> (crash and error reports), <strong>Stripe</strong> (Pro payments and subscriptions), <strong>Cloudflare</strong> (our domain and forwarding the emails you send us) and <strong>GitHub Pages</strong> (for this website). We don't sell your personal information.</p>
+          <p>We use providers that store and process information on our behalf, only to provide their service: <strong>Supabase</strong> (database, authentication, file storage and server functions), <strong>Resend</strong> (to send your account emails, such as sign-up confirmation and password changes, and report alerts to our team), <strong>Expo</strong> together with Apple's and Google's notification services (to deliver notifications), <strong>Sentry</strong> (crash and error reports), <strong>Stripe</strong> (Pro payments and subscriptions), <strong>Google</strong> (Gemini, for the AI job assistant), <strong>Cloudflare</strong> (our domain, forwarding the emails you send us, and the Pro subscription and team pages) and <strong>GitHub Pages</strong> (for this website). We don't sell your personal information.</p>
 
           <h2>How long we keep it</h2>
           <p>We keep your information while you have an account. Also:</p>
@@ -199,6 +204,7 @@
             <li>We keep a short record of each moderation action (what was done and when), without the reported content, as long as needed to enforce our rules and handle disputes.</li>
             <li>Session records are removed when you sign out of that session or delete your account.</li>
             <li>Your subscription details, Pro history, availability and invitations are kept while you have your account. If another handyman invited you and you delete your account, they keep only the record of their reward, without your information. Stripe keeps its own payment records under its legal obligations and its <a href="https://stripe.com/privacy">privacy policy</a>.</li>
+            <li>The record of when you used the AI assistant is deleted after 2 days.</li>
             <li>Crash reports are deleted automatically within 90 days.</li>
             <li>Technical logs and backup copies may remain for a limited period under our service providers' retention practices.</li>
           </ul>
