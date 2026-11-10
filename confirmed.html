@@ -18,7 +18,8 @@
   h1 { margin: 0 0 12px; color: #111827; font-size: 18px; font-weight: 600; line-height: 1.4; }
   p { margin: 0; color: #374151; font-size: 15px; line-height: 1.5; }
   /* "Abrir ServiCilio": shown only on a phone (the script turns it on). */
-  .open-app { display: none; margin-top: 24px; padding: 14px 16px; border-radius: 12px; background: #0E7A82; color: #fff; font-size: 16px; font-weight: 700; text-decoration: none; }
+  /* Sized to its label, centered (client, 2026-11-09: "a little smaller"). */
+  .open-app { display: none; margin-top: 22px; padding: 10px 24px; border-radius: 10px; background: #0E7A82; color: #fff; font-size: 15px; font-weight: 700; text-decoration: none; }
   .open-app:active { opacity: 0.85; }
 </style>
 </head>
@@ -117,7 +118,7 @@
     var openApp = document.getElementById('open-app');
     openApp.textContent = lang === 'en' ? 'Open ServiCilio' : 'Abrir ServiCilio';
     openApp.href = state === 'email' ? 'servicilio://' : 'servicilio://sign-in';
-    openApp.style.display = 'block';
+    openApp.style.display = 'inline-block';
   }
 
   // The /verify redirect also signed this browser in, and nothing here uses
