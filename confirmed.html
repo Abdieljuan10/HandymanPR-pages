@@ -17,6 +17,9 @@
   .icon { width: 56px; height: 56px; border-radius: 28px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 28px; line-height: 1; }
   h1 { margin: 0 0 12px; color: #111827; font-size: 18px; font-weight: 600; line-height: 1.4; }
   p { margin: 0; color: #374151; font-size: 15px; line-height: 1.5; }
+  /* "Abrir ServiCilio": shown only on a phone (the script turns it on). */
+  .open-app { display: none; margin-top: 24px; padding: 14px 16px; border-radius: 12px; background: #0E7A82; color: #fff; font-size: 16px; font-weight: 700; text-decoration: none; }
+  .open-app:active { opacity: 0.85; }
 </style>
 </head>
 <body>
@@ -27,6 +30,7 @@
         <div id="icon" class="icon" style="background:#E8593F;">&#10003;</div>
         <h1 id="title"></h1>
         <p id="text"></p>
+        <a id="open-app" class="open-app" href="servicilio://sign-in"></a>
       </div>
     </div>
   </div>
@@ -101,6 +105,19 @@
     icon.textContent = '!';
   } else if (state === 'unknown') {
     icon.style.display = 'none';
+  }
+
+  // "Abrir ServiCilio" (client, 2026-11-09: "Is there a way that clicking the
+  // email confirming takes you back to the app?"). On a phone, a button that
+  // opens the app through its own link: at the sign-in screen, or as it is
+  // for a changed email (that person is already signed in). Not on a
+  // computer, where there's no app to open. A tap, not an automatic jump:
+  // phones usually block a page from opening an app on its own.
+  if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent || '')) {
+    var openApp = document.getElementById('open-app');
+    openApp.textContent = lang === 'en' ? 'Open ServiCilio' : 'Abrir ServiCilio';
+    openApp.href = state === 'email' ? 'servicilio://' : 'servicilio://sign-in';
+    openApp.style.display = 'block';
   }
 
   // The /verify redirect also signed this browser in, and nothing here uses
