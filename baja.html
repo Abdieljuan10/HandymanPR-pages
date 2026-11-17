@@ -42,7 +42,11 @@
   // turns promotions off and keeps the address off every future promotion.
   // Text only (textContent).
   var FUNCTION_URL = 'https://uswacxdfunopsggkqxgh.supabase.co/functions/v1/marketing-unsubscribe';
-  var lang = (navigator.language || '').toLowerCase().indexOf('en') === 0 ? 'en' : 'es';
+  // The email's language, not the phone's (client, 2026-11-17: the email
+  // was in Spanish and this page came up in English). Promotions are in
+  // Spanish today; an English one will add &lang=en to its link, which the
+  // marketing-unsubscribe function will then need to pass through.
+  var lang = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'es';
   var copy = {
     es: {
       title: '¿Dejar de recibir promociones?',
