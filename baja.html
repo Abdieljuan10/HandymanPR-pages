@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<title>ServiCilio</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f4f5f7; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+  .wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
+  .card { max-width: 420px; width: 100%; background: #fff; border-radius: 12px; overflow: hidden; text-align: center; }
+  .head { background: #0E7A82; padding: 28px 24px; color: #fff; font-size: 20px; font-weight: 700; letter-spacing: 0.5px; display: flex; align-items: center; gap: 10px; }
+  .head-logo { display: block; flex: none; }
+  .body { padding: 36px 28px; }
+  h1 { margin: 0 0 12px; color: #111827; font-size: 18px; font-weight: 600; line-height: 1.4; }
+  p { margin: 0 0 20px; color: #374151; font-size: 15px; line-height: 1.5; }
+  button { font: inherit; border: 0; cursor: pointer; display: inline-block; background: #0E7A82; color: #fff; font-weight: 700; padding: 12px 22px; border-radius: 10px; }
+  button[disabled] { opacity: 0.6; cursor: default; }
+  .error { color: #b42318; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="head"><img class="head-logo" src="img/servicilio-house-white.png" alt="" width="34" height="28">ServiCilio</div>
+      <div class="body">
+        <h1 id="title"></h1>
+        <p id="text"></p>
+        <button type="button" id="go"></button>
+        <p id="error" class="error" hidden></p>
+      </div>
+    </div>
+  </div>
+<script>
+(function () {
+  // The unsubscribe link in promotional emails lands here (the server sends
+  // GET requests here and changes nothing, since mail scanners open links).
+  // The button POSTs the token to the marketing-unsubscribe function, which
+  // turns promotions off and keeps the address off every future promotion.
+  // Text only (textContent).
+  var FUNCTION_URL = 'https://uswacxdfunopsggkqxgh.supabase.co/functions/v1/marketing-unsubscribe';
+  var lang = (navigator.language || '').toLowerCase().indexOf('en') === 0 ? 'en' : 'es';
+  var copy = {
+    es: {
+      title: '¿Dejar de recibir promociones?',
+      text: 'Dejarás de recibir ofertas y novedades de ServiCilio por correo. Los correos de tu cuenta (como confirmar tu correo o cambiar tu contraseña) te seguirán llegando.',
+      button: 'Darme de baja',
+      sending: 'Un momento…',
+      doneTitle: 'Listo, te diste de baja',
+      doneText: 'No te enviaremos más promociones. Si cambias de idea, puedes activarlas otra vez en la app: Configuración → Recibir promociones por correo.',
+      badTitle: 'Este enlace no está completo',
+      badText: 'Abre el enlace «Darte de baja» desde el correo otra vez, o desactiva las promociones en la app: Configuración → Recibir promociones por correo.',
+      error: 'No se pudo completar. Inténtalo otra vez en un momento.'
+    },
+    en: {
+      title: 'Stop getting promotions?',
+      text: "You'll stop getting offers and news from ServiCilio by email. Emails about your account (like confirming your email or changing your password) will still reach you.",
+      button: 'Unsubscribe',
+      sending: 'One moment…',
+      doneTitle: "Done, you're unsubscribed",
+      doneText: "We won't send you more promotions. If you change your mind, you can turn them back on in the app: Settings → Get promotions by email.",
+      badTitle: "This link isn't complete",
+      badText: 'Open the unsubscribe link from the email again, or turn promotions off in the app: Settings → Get promotions by email.',
+      error: "That didn't go through. Please try again in a moment."
+    }
+  };
+  var c = copy[lang];
+  document.documentElement.lang = lang;
+  var title = document.getElementById('title');
+  var text = document.getElementById('text');
+  var go = document.getElementById('go');
+  var error = document.getElementById('error');
+  var token = (new URLSearchParams(location.search).get('t') || '').trim().toLowerCase();
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(token)) {
+    title.textContent = c.badTitle;
+    text.textContent = c.badText;
+    go.hidden = true;
+    return;
+  }
+  title.textContent = c.title;
+  text.textContent = c.text;
+  go.textContent = c.button;
+  go.addEventListener('click', function () {
+    go.disabled = true;
+    go.textContent = c.sending;
+    error.hidden = true;
+    fetch(FUNCTION_URL + '?t=' + encodeURIComponent(token), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'List-Unsubscribe=One-Click'
+    }).then(function (response) {
+      if (!response.ok) throw new Error('status ' + response.status);
+      title.textContent = c.doneTitle;
+      text.textContent = c.doneText;
+      go.hidden = true;
+    }).catch(function () {
+      go.disabled = false;
+      go.textContent = c.button;
+      error.textContent = c.error;
+      error.hidden = false;
+    });
+  });
+})();
+</script>
+</body>
+</html>
